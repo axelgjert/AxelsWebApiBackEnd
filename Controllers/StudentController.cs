@@ -10,17 +10,22 @@ namespace TE19DWEBAPIKURS.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
-
+        
         public StudentController(IStudentService studentService)
         {
             _studentService = studentService;
         }
-
         [HttpGet]
         public ActionResult<List<Student>> GetStudents() {
+          
             return Ok(_studentService.GetStudentList());
         }
 
-        
+
+        //1: 
+         [HttpPost]
+         public ActionResult<List<Student>> AddStudent(Student newStudent) {
+             return Ok(_studentService.AddStudent(newStudent));
+         }
     }
 }
