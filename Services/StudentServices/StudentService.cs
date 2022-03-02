@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TE19DWEBAPIKURS.Models;
 
 namespace TE19DWEBAPIKURS.Services.StudentServices
@@ -17,6 +18,21 @@ namespace TE19DWEBAPIKURS.Services.StudentServices
 
         public List<Student> AddStudent(Student newStudent) {
             studentLista.Add(newStudent);
+            return studentLista;
+        }
+
+
+        public  List<Student> DeleteStudent(int id) {
+            // for(int i = 0; i < studentLista.Count; i++) {
+            //     if(studentLista[i].Id == id) {
+            //         studentLista.Remove(studentLista[i]);
+            //         return studentLista;
+            //     }
+            // }
+              
+              var hittadStudent =  studentLista.FirstOrDefault(s => s.Id == id);
+               studentLista.Remove(hittadStudent);
+            
             return studentLista;
         }
 
