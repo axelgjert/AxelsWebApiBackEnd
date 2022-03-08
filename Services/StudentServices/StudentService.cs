@@ -21,18 +21,24 @@ namespace TE19DWEBAPIKURS.Services.StudentServices
             return studentLista;
         }
 
-
         public  List<Student> DeleteStudent(int id) {
-            // for(int i = 0; i < studentLista.Count; i++) {
-            //     if(studentLista[i].Id == id) {
-            //         studentLista.Remove(studentLista[i]);
-            //         return studentLista;
-            //     }
-            // }
-              
-              var hittadStudent =  studentLista.FirstOrDefault(s => s.Id == id);
+
+              var hittadStudent =  studentLista.FirstOrDefault(student => student.Id == id);
                studentLista.Remove(hittadStudent);
             
+            return studentLista;
+        }
+
+
+        public List<Student> UpdateStudent(Student updateStudent) {
+
+            var hittadStudent = studentLista.FirstOrDefault(student => student.Id == updateStudent.Id);
+
+            if(hittadStudent != null) {
+                hittadStudent.Name = updateStudent.Name;
+                hittadStudent.Age = updateStudent.Age;
+            }
+
             return studentLista;
         }
 

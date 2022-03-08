@@ -13,5 +13,8 @@ namespace TE19DWEBAPIKURS.Services.StudentServices
          
          //3: Skapa en metod som tar bort en student
         List<Student> DeleteStudent(int id);
+        
+        //4: Update student
+         List<Student> UpdateStudent(Student updateStudent);
     }
 }

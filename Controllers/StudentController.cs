@@ -20,7 +20,7 @@ namespace TE19DWEBAPIKURS.Controllers
           
             return Ok(_studentService.GetStudentList());
         }
-        //1: 
+        
          [HttpPost]
          public ActionResult<List<Student>> AddStudent(Student newStudent) {
              return Ok(_studentService.AddStudent(newStudent));
@@ -30,6 +30,12 @@ namespace TE19DWEBAPIKURS.Controllers
          [HttpDelete]
          public ActionResult<List<Student>> DeleteStudent(int id) {
              return Ok(_studentService.DeleteStudent(id));
+         }
+
+         [HttpPut]
+
+         public ActionResult<List<Student>> UpdateStudent(Student UpdateStudent) {
+             return Ok(_studentService.UpdateStudent(UpdateStudent));
          }
     }
 }
