@@ -32,10 +32,11 @@ namespace TE19DWEBAPIKURS.Services.StudentServices
 
         public  List<Student> DeleteStudent(int id) {
 
-              var hittadStudent =  studentLista.FirstOrDefault(student => student.Id == id);
-               studentLista.Remove(hittadStudent);
+              var hittadStudent =  _context.students.FirstOrDefault(student => student.Id == id);
+               _context.students.Remove(hittadStudent);
+               _context.SaveChanges();
             
-            return studentLista;
+            return _context.students.ToList();
         }
 
         public List<Student> UpdateStudent(Student updateStudent) {
