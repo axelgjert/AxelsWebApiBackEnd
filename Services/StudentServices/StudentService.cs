@@ -11,14 +11,23 @@ namespace TE19DWEBAPIKURS.Services.StudentServices
             new Student() {Id = 2, Name = "Gustav", classStudent = StudentClass.TE19C}
         };
 
+        public DataContext Context { get; }
+
+        private readonly DataContext _context;
+        public StudentService(DataContext context)
+        {
+            _context = context;
+        }
+
         public List<Student> GetStudentList() 
         {
-            return studentLista;
+            return _context.students.ToList();
         }
 
         public List<Student> AddStudent(Student newStudent) {
-            studentLista.Add(newStudent);
-            return studentLista;
+              _context.students.Add(newStudent);
+             _context.SaveChanges();
+            return _context.students.ToList();
         }
 
         public  List<Student> DeleteStudent(int id) {
@@ -28,7 +37,6 @@ namespace TE19DWEBAPIKURS.Services.StudentServices
             
             return studentLista;
         }
-
 
         public List<Student> UpdateStudent(Student updateStudent) {
 
@@ -41,7 +49,7 @@ namespace TE19DWEBAPIKURS.Services.StudentServices
 
             return studentLista;
         }
-
-      
     }
 }
+
+      
